@@ -24,7 +24,7 @@ class AsyncLogging : noncopyable
  public:
 
   AsyncLogging(const string& basename,
-               off_t rollSize,
+               long long rollSize,
                int flushInterval = 3);
 
   ~AsyncLogging()
@@ -62,7 +62,7 @@ class AsyncLogging : noncopyable
   const int flushInterval_;
   std::atomic<bool> running_;
   const string basename_;
-  const off_t rollSize_;
+  const long long rollSize_;
   muduo::Thread thread_;
   muduo::CountDownLatch latch_;
   muduo::MutexLock mutex_;
